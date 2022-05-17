@@ -3,7 +3,7 @@
 		<input type="text" name="nom" class="form-control mt-4" placeholder="Nom" value="<?php echo $utilisateur['nom'];?>">
 		<input type="text" name="prenom" class="form-control mt-4" placeholder="Prénom" value="<?php echo $utilisateur['prenom'];?>">
 		<input type="text" name="email" class="form-control mt-4" placeholder="Email" value="<?php echo $utilisateur['email'];?>">
-		<input type="password" name="password" class="form-control mt-4" placeholder="Mot de passe" value="<?php echo $utilisateur['password'];?>">
+		<input type="password" name="password" class="form-control mt-4" placeholder="Mot de passe" value="">
 
 		<div class="d-flex mt-4">
 		<button type="submit" class="btn btn-success me-4">

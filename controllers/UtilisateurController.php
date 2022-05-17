@@ -65,8 +65,9 @@ class UtilisateurController{
 			$prenom = htmlentities($_POST['prenom']);
 			$email = htmlentities($_POST['email']);
 			$password = htmlentities($_POST['password']);
+			$hpassword = crypt($password, "$2y$07$22carcateresDeSelwolol$");
 
-			$this->_utilisateur->saveUtilisateur($nom, $prenom, $email, $password);
+			$this->_utilisateur->saveUtilisateur($nom, $prenom, $email, $hpassword);
 
 			return header('Location:index.php?page=utilisateurs');
 		}
@@ -100,8 +101,9 @@ class UtilisateurController{
 			$prenom = htmlentities($_POST['prenom']);
 			$email = htmlentities($_POST['email']);
 			$password = htmlentities($_POST['password']);
+			$hpassword = crypt($password, "$2y$07$22carcateresDeSelwolol$");
 
-			$this->_utilisateur->updateUtilisateur($id, $nom, $prenom, $email, $password);
+			$this->_utilisateur->updateUtilisateur($id, $nom, $prenom, $email, $hpassword);
 
 			return header('Location:index.php?page=utilisateurs');
 		}
