@@ -18,6 +18,7 @@ $controller = $frontController->controllerChargeur();
 
 <!DOCTYPE html>
 <html>
+
     <?php include_once 'views/head.php'; ?>
     <body>
 

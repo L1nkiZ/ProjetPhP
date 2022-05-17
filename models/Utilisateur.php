@@ -7,7 +7,7 @@ class Utilisateur{
 	public function __construct()
 	{
 		try{
-			$this->_bdd = new PDO('mysql:host=localhost;dbname=jeux_video;charset=utf8', 'root', '');
+			$this->_bdd = new PDO('mysql:host=localhost;dbname=jeux_video;charset=utf8', 'root', 'root');
 		}catch(Exception $e){
 		    die('Erreur : '.$e->getMessage());
 		}
