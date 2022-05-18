@@ -17,14 +17,13 @@ class Utilisateur{
 	/*
 	 * Séléctionne l'utilisateur si il existe en BDD
 	 */
-	public function selectUtilisateur($email, $password)
+	public function selectUtilisateur($email)
 	{
 		$sql = "SELECT email, password
 				FROM utilisateurs
-				WHERE email = ?
-				AND password = ?";
+				WHERE email = ?";
 		$req = $this->_bdd->prepare($sql);
-		$req->execute(array($email, $password));
+		$req->execute(array($email));
 		return $req->fetch(PDO::FETCH_ASSOC);
 	}
 
@@ -43,10 +42,10 @@ class Utilisateur{
 	}
 
 	/*
-	 * Récupère toutes les informations de l'utilisateur pour la modification
+	 * Récupère toutes les informations de l'utilisateur pour la modification (sauf le mot de passe)
 	 */
 	public function getUtilisateur($id){
-		$sql = "SELECT id, nom, prenom, email, password
+		$sql = "SELECT id, nom, prenom, email
 				FROM utilisateurs
 				WHERE id = ? ";
 		$req = $this->_bdd->prepare($sql);
@@ -73,25 +72,25 @@ class Utilisateur{
 	/*
 	 * Enresgitre un nouvel utilisateur
 	 */
-	public function saveUtilisateur($nom, $prenom, $email, $password)
+	public function saveUtilisateur($nom, $prenom, $email, $hpassword)
 	{
 		$sql = "INSERT INTO utilisateurs(nom, prenom, email, password)
-				VALUES ('$nom', '$prenom', '$email', '$password')";
+				VALUES (?, ?, ?, ?)";
 		$req = $this->_bdd->prepare($sql);
-		$req->execute(array($nom, $prenom, $email, $password));
+		$req->execute(array($nom, $prenom, $email, $hpassword));
 	}
 
 
 	/*
 	 * Permet la mose à jour d'un utilisateur
 	 */
-	public function updateUtilisateur($id, $nom, $prenom, $email, $password)
+	public function updateUtilisateur($id, $nom, $prenom, $email, $hpassword)
 	{
 		$sql = "UPDATE utilisateurs
-				SET nom = '$nom', prenom = '$prenom', email = '$email', password = '$password'
+				SET nom = ?, prenom = ?, email = ?, password = ?
 				WHERE id = ?";
 		$req = $this->_bdd->prepare($sql);
-		$req->execute(array($id));
+		$req->execute(array($nom, $prenom, $email, $hpassword, $id));
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 	}
 

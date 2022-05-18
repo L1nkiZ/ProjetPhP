@@ -64,8 +64,10 @@ class ConnexionController{
 			/*
 			 * Vérifie si l'utilisateur existe en BDD
 			 */
-			$utilisateur = $this->_utilisateur->selectUtilisateur($email, $password);
-			if($utilisateur){
+			$utilisateur = $this->_utilisateur->selectUtilisateur($email);
+			//echo(var_dump($utilisateur["password"]));
+			
+			if(password_verify($password, $utilisateur["password"])){
 				/*
 				 * Récupère les infos de l'utilisateur et sauvegarde en session
 				 */
