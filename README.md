@@ -1,2 +1,2 @@
 # ProjetPhP
-Guillaume GERARD Felix FERCOT - Projet PhP - jeux vidéo
+Guillaume GERARD Felix FERCOT - Projet PhP - IUT METZ
